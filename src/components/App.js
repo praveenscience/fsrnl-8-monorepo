@@ -1,54 +1,19 @@
 import React, { Component } from "react";
+import Navbar from "./Bootstrap/Navbar";
 
 class App extends Component {
   state = {
-    Name: "",
-    Refresh: false
+    Dark: false
   };
-  componentDidMount() {
-    console.log("componentDidMount called!");
-  }
-  componentDidUpdate(prevProps, prevState) {
-    console.log("componentDidUpdate called!");
-    console.log({ prevProps, prevState });
-    if (prevState.Refresh !== this.state.Refresh) {
-      window.alert("Call the API!");
-    }
-  }
+  toggleNav = () => {
+    this.setState({ Dark: !this.state.Dark });
+  };
   render() {
-    console.log("render called!");
     return (
       <div className="App">
-        <p>
-          Hello.{" "}
-          {this.state.Name.trim().length === 0
-            ? "Please Enter your Name!"
-            : `My name is ${this.state.Name}!`}
-        </p>
-        <input
-          type="text"
-          value={this.state.Name}
-          onChange={e => {
-            this.setState({ Name: e.target.value });
-          }}
-        />
-        <br />
-        <input
-          type="text"
-          value={this.state.Name}
-          onChange={e => {
-            this.setState({ Name: e.target.value });
-          }}
-        />
-        <br />
-        <button
-          onClick={() => {
-            this.setState({ Refresh: !this.state.Refresh });
-          }}
-          disabled={this.state.Name.trim().length === 0}
-        >
-          Refresh
-        </button>
+        <Navbar dark={this.state.Dark} toggleNav={this.toggleNav}>
+          React Application
+        </Navbar>
       </div>
     );
   }
