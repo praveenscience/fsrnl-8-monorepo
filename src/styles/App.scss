@@ -1,3 +1,13 @@
 .App {
   font-family: inherit;
+  .SameFileFuncComp {
+    pre {
+      border: 1px solid #ccc;
+      padding: 5px;
+      line-height: 1;
+      background-color: #f5f5f5;
+      margin: 5px;
+      border-radius: 5px;
+    }
+  }
 }
