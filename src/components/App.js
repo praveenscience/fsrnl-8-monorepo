@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import Navbar from "./Bootstrap/Navbar";
+import GenericRoute from "./GenericRoute";
 
 const Links = [
   {
@@ -82,9 +83,7 @@ class App extends Component {
               <Switch>
                 {Links.map(link => (
                   <Route key={link.Link} path={link.Link} exact={link.Exact}>
-                    <div className="alert alert-info text-center">
-                      This is the {link.Name} page.
-                    </div>
+                    <GenericRoute Name={link.Name} />
                   </Route>
                 ))}
                 <Route
