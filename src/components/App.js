@@ -45,6 +45,11 @@ class App extends Component {
                     </div>
                   </Route>
                 ))}
+                <Route path="/users/:UserId">
+                  <div className="alert alert-info text-center">
+                    This is the User Profile page.
+                  </div>
+                </Route>
                 <Route>
                   <div className="alert alert-info text-center">Get Lost.</div>
                 </Route>
