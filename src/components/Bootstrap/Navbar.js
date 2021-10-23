@@ -3,7 +3,8 @@ import { Route, NavLink } from "react-router-dom";
 const Links = [
   {
     Name: "Home",
-    Link: "/"
+    Link: "/",
+    Exact: true
   },
   {
     Name: "About Me",
@@ -37,6 +38,7 @@ const Navbar = ({ children, dark, toggleNav }) => {
                   aria-current="page"
                   activeClassName="active"
                   to={link.Link}
+                  exact={link.Exact}
                 >
                   {link.Name}
                 </NavLink>
