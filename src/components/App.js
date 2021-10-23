@@ -87,11 +87,30 @@ class App extends Component {
                     </div>
                   </Route>
                 ))}
-                <Route path="/users/:UserId">
-                  <div className="alert alert-info text-center">
-                    This is the User Profile page.
-                  </div>
-                </Route>
+                <Route
+                  path="/users/:UserId"
+                  render={rp => {
+                    const Username = rp.match.params.UserId;
+                    const UserData = Users.find(
+                      user => user.Path === "/" + Username
+                    );
+                    return UserData ? (
+                      <div className="alert alert-info text-center">
+                        <p>
+                          This is the User Profile page for user: {Username}.
+                          The person has got a name: {UserData.Name}.
+                        </p>
+                        <blockquote className="p-2 bg-white rounded shadow-sm">
+                          <p className="m-0">{UserData.Intro}</p>
+                        </blockquote>
+                      </div>
+                    ) : (
+                      <div className="alert alert-danger text-center">
+                        No one's there! Tata! 👋🏻
+                      </div>
+                    );
+                  }}
+                />
                 <Route>
                   <div className="alert alert-info text-center">Get Lost.</div>
                 </Route>
