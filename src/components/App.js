@@ -27,7 +27,8 @@ const Links = [
 
 class App extends Component {
   state = {
-    Dark: false
+    Dark: false,
+    Users: []
   };
   toggleNav = () => {
     this.setState({ Dark: !this.state.Dark });
@@ -47,7 +48,10 @@ class App extends Component {
                     <GenericRoute Name={link.Name} />
                   </Route>
                 ))}
-                <Route path="/users/:UserId" component={UserProfile} />
+                <Route
+                  path="/users/:UserId"
+                  render={() => <UserProfile Users={this.state.Users} />}
+                />
                 <Route component={FourOhFour} />
               </Switch>
             </div>
