@@ -4,6 +4,7 @@ import Navbar from "./Bootstrap/Navbar";
 import GenericRoute from "./GenericRoute";
 import UserProfile from "./UserProfile";
 import FourOhFour from "./FourOhFour";
+import { GetUsers } from "../services/Users";
 
 const Links = [
   {
@@ -28,11 +29,20 @@ const Links = [
 class App extends Component {
   state = {
     Dark: false,
-    Users: []
+    Users: [],
+    Loaded: false
   };
   toggleNav = () => {
     this.setState({ Dark: !this.state.Dark });
   };
+  componentDidMount() {
+    GetUsers().then(Users =>
+      this.setState({
+        Users,
+        Loaded: true
+      })
+    );
+  }
   render() {
     return (
       <div className="App">
@@ -50,7 +60,13 @@ class App extends Component {
                 ))}
                 <Route
                   path="/users/:UserId"
-                  render={() => <UserProfile Users={this.state.Users} />}
+                  render={() =>
+                    this.state.Loaded ? (
+                      <UserProfile Users={this.state.Users} />
+                    ) : (
+                      <p>Loading User Data...</p>
+                    )
+                  }
                 />
                 <Route component={FourOhFour} />
               </Switch>
