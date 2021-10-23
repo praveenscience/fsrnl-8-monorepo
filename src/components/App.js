@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Navbar from "./Bootstrap/Navbar";
-import { NavLink } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -15,21 +14,6 @@ class App extends Component {
         <Navbar dark={this.state.Dark} toggleNav={this.toggleNav}>
           React Application
         </Navbar>
-        <NavLink
-          to="/"
-          exact={true}
-          className="btn btn-primary m-5"
-          activeClassName="btn-lg"
-        >
-          Go to Home Page
-        </NavLink>
-        <NavLink
-          to="/feedback"
-          className="btn btn-primary m-5"
-          activeClassName="btn-lg"
-        >
-          Go to Feedback Page
-        </NavLink>
       </div>
     );
   }
