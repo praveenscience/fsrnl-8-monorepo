@@ -47,10 +47,7 @@ class App extends Component {
                     <GenericRoute Name={link.Name} />
                   </Route>
                 ))}
-                <Route
-                  path="/users/:UserId"
-                  render={rp => <UserProfile {...rp} />}
-                />
+                <Route path="/users/:UserId" component={UserProfile} />
                 <Route component={FourOhFour} />
               </Switch>
             </div>

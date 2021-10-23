@@ -1,3 +1,5 @@
+import { useParams } from "react-router-dom";
+
 const Users = [
   {
     Name: "Praveen Kumar",
@@ -41,8 +43,8 @@ const Users = [
   }
 ];
 
-const UserProfile = props => {
-  const Username = props.match.params.UserId;
+const UserProfile = () => {
+  const Username = useParams().UserId;
   const UserData = Users.find(user => user.Path === "/" + Username);
   return UserData ? (
     <div className="alert alert-info text-center">
