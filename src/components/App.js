@@ -45,6 +45,9 @@ class App extends Component {
                     </div>
                   </Route>
                 ))}
+                <Route>
+                  <div className="alert alert-info text-center">Get Lost.</div>
+                </Route>
               </Switch>
             </div>
           </div>
