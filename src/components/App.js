@@ -36,9 +36,9 @@ class App extends Component {
     this.setState({ Dark: !this.state.Dark });
   };
   componentDidMount() {
-    GetUsers().then(Users =>
+    GetUsers().then(res =>
       this.setState({
-        Users,
+        Users: res.data,
         Loaded: true
       })
     );
