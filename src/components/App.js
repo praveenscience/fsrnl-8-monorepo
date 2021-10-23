@@ -21,6 +21,48 @@ const Links = [
     Link: "/feedback"
   }
 ];
+const Users = [
+  {
+    Name: "Praveen Kumar",
+    Path: "/praveen",
+    Intro: "I am a Full Stack JavaScript Specialist based in London, UK."
+  },
+  {
+    Name: "Mudassar",
+    Path: "/mudassar",
+    Intro: "Day and Night I am learning :)"
+  },
+  {
+    Name: "Sayan Dey",
+    Path: "/sayan",
+    Intro: "I am a .NET developer."
+  },
+  {
+    Name: "Varun",
+    Path: "/Varun",
+    Intro: "Frontend developer based in berlin"
+  },
+  {
+    Name: "Kundan Kumar Pandey",
+    Path: "/kundan",
+    Intro: "I am a developer. "
+  },
+  {
+    Name: "Susanna",
+    Path: "/susanna",
+    Intro: "I am a fresher"
+  },
+  {
+    Name: "Sree Ramya",
+    Path: "/ramya",
+    Intro: "I am Full Stack Learner"
+  },
+  {
+    Name: "Bharatchandran",
+    Path: "/bharatchandran",
+    Intro: "I am a Btech student"
+  }
+];
 class App extends Component {
   state = {
     Dark: false
