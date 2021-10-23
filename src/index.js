@@ -7,7 +7,7 @@ import "./styles/index.scss";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App Mudassar="Big Person" />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
