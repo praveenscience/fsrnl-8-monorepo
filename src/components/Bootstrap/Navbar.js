@@ -30,16 +30,18 @@ const Navbar = ({ children, dark, toggleNav }) => {
         <span className="navbar-brand mb-0 h1">{children}</span>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                About Me
-              </a>
-            </li>
+            {Links.map(link => (
+              <li className="nav-item" key={link.Link}>
+                <NavLink
+                  className="nav-link"
+                  aria-current="page"
+                  activeClassName="active"
+                  to={link.Link}
+                >
+                  {link.Name}
+                </NavLink>
+              </li>
+            ))}
             <li className="nav-item">
               <span className="nav-link nav-action" onClick={toggleNav}>
                 Toggle Nav
