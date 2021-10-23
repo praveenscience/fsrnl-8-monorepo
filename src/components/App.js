@@ -37,18 +37,16 @@ class App extends Component {
         <div className="container my-3">
           <div className="row">
             <div className="col">
-              <Switch>
-                {Links.map(link => (
-                  <Route key={link.Link} path={link.Link} exact={link.Exact}>
-                    <div className="alert alert-info text-center">
-                      This is the {link.Name} page.
-                    </div>
-                  </Route>
-                ))}
-                <Route>
-                  <div className="alert alert-info text-center">Get Lost.</div>
+              {Links.map(link => (
+                <Route key={link.Link} path={link.Link} exact={link.Exact}>
+                  <div className="alert alert-info text-center">
+                    This is the {link.Name} page.
+                  </div>
                 </Route>
-              </Switch>
+              ))}
+              <Route>
+                <div className="alert alert-info text-center">Get Lost.</div>
+              </Route>
             </div>
           </div>
         </div>
