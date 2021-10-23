@@ -1,4 +1,4 @@
-import { withRouter, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Links = [
   {
@@ -23,7 +23,7 @@ const Links = [
     Link: "/giuhrt597h"
   }
 ];
-const Navbar = ({ children, dark, toggleNav, location }) => {
+const Navbar = ({ children, dark, toggleNav }) => {
   dark = !!dark ? "dark" : "light";
   return (
     <nav className={`navbar navbar-expand navbar-${dark} bg-${dark}`}>
@@ -33,17 +33,15 @@ const Navbar = ({ children, dark, toggleNav, location }) => {
           <ul className="navbar-nav">
             {Links.map(link => (
               <li className="nav-item" key={link.Link}>
-                <Link
-                  className={
-                    "nav-link" +
-                    (location.pathname === link.Link ? " active" : "")
-                  }
+                <NavLink
+                  className="nav-link"
                   aria-current="page"
+                  activeClassName="active"
                   to={link.Link}
                   exact={link.Exact}
                 >
                   {link.Name}
-                </Link>
+                </NavLink>
               </li>
             ))}
             <li className="nav-item">
@@ -58,4 +56,4 @@ const Navbar = ({ children, dark, toggleNav, location }) => {
   );
 };
 
-export default withRouter(Navbar);
+export default Navbar;
