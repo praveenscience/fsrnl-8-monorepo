@@ -23,7 +23,7 @@ class FormsState extends Component {
             Label={Mapper[key][1]}
             Id={key}
             Type={Mapper[key][0]}
-            Desc={"Please enter some value for " + Mapper[key][1]}
+            Desc={`Please enter the value for ${Mapper[key][1]}.`}
           />
         ))}
       </form>
