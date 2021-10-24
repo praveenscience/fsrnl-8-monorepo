@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const User = ({ user }) => {
   return (
     <div className="card">
@@ -13,13 +15,16 @@ const User = ({ user }) => {
       <div className="card-body">
         <h5 className="card-title">{user.Name}</h5>
         <p className="card-text">{user.Intro}</p>
+        <Link to={"/users" + user.Path} className="btn btn-primary btn-sm">
+          Profile
+        </Link>
         {Object.keys(user.Social).map(
           social =>
             user.Social[social].trim().length > 0 && (
               <a
                 href={user.Social[social]}
                 key={social}
-                className="btn btn-primary btn-sm me-2"
+                className="btn btn-primary btn-sm ms-2"
               >
                 {social}
               </a>
