@@ -13,9 +13,18 @@ const User = ({ user }) => {
       <div className="card-body">
         <h5 className="card-title">{user.Name}</h5>
         <p className="card-text">{user.Intro}</p>
-        <a href={"/"} className="btn btn-primary">
-          Go somewhere
-        </a>
+        {Object.keys(user.Social).map(
+          social =>
+            user.Social[social].trim().length > 0 && (
+              <a
+                href={user.Social[social]}
+                key={social}
+                className="btn btn-primary btn-sm me-2"
+              >
+                {social}
+              </a>
+            )
+        )}
       </div>
     </div>
   );
