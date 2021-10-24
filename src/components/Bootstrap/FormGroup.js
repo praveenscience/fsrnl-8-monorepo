@@ -9,6 +9,7 @@ const FormGroup = ({ Label, Id, Type, className, Desc }) => {
         className={"form-control" + (className ? " " + className : "")}
         id={Id}
         aria-describedby={Id + "Help"}
+        placeholder={"Enter " + Label}
       />
       {Desc && (
         <div id={Id + "Help"} className="form-text">
