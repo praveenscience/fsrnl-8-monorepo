@@ -1,4 +1,19 @@
 const FormGroup = ({ Label, Id, Type, className, Desc }) => {
+  if (
+    !Label ||
+    (Label && Label.trim().length === 0) ||
+    !Id ||
+    (Id && Id.trim().length === 0) ||
+    !Type ||
+    (Type && Type.trim().length === 0)
+  ) {
+    return (
+      <div className="alert alert-danger">
+        Please pass the mandatory <code>Label</code>, <code>Type</code> and{" "}
+        <code>Id</code> properties.
+      </div>
+    );
+  }
   return (
     <div className="mb-3">
       <label htmlFor={Id} className="form-label">
