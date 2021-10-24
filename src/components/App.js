@@ -5,6 +5,7 @@ import GenericRoute from "./GenericRoute";
 import UserProfile from "./UserProfile";
 import FourOhFour from "./FourOhFour";
 import { GetUsers } from "../services/Users";
+import Users from "./Users";
 
 const Links = [
   {
@@ -19,10 +20,6 @@ const Links = [
   {
     Name: "Downloads",
     Link: "/downloads"
-  },
-  {
-    Name: "Feedback",
-    Link: "/feedback"
   }
 ];
 
@@ -67,6 +64,10 @@ class App extends Component {
                       <p>Loading User Data...</p>
                     )
                   }
+                />
+                <Route
+                  path="/users"
+                  render={() => <Users users={this.state.Users} />}
                 />
                 <Route component={FourOhFour} />
               </Switch>
