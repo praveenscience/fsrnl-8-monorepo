@@ -19,6 +19,10 @@ const Links = [
     Link: "/users"
   },
   {
+    Name: "Forms",
+    Link: "/forms"
+  },
+  {
     Name: "Random Page",
     Link: "/giuhrt597h"
   }
