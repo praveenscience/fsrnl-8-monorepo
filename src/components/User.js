@@ -5,7 +5,7 @@ const User = ({ user }) => {
         src={
           user.Social.GitHub.trim().length > 0
             ? user.Social.GitHub + ".png"
-            : "https://i.imgur.com/T2v2oUz.png"
+            : "https://i.imgur.com/iN9yTJ8.png"
         }
         className="card-img-top"
         alt={user.Name}
