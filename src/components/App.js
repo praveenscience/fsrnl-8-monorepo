@@ -6,6 +6,7 @@ import UserProfile from "./UserProfile";
 import FourOhFour from "./FourOhFour";
 import { GetUsers } from "../services/Users";
 import Users from "./Users";
+import Forms from "./Forms";
 
 const Links = [
   {
@@ -69,6 +70,7 @@ class App extends Component {
                   path="/users"
                   render={() => <Users users={this.state.Users} />}
                 />
+                <Route path="/forms" render={() => <Forms />} />
                 <Route component={FourOhFour} />
               </Switch>
             </div>
