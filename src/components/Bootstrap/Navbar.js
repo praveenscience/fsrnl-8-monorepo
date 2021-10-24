@@ -15,8 +15,8 @@ const Links = [
     Link: "/downloads"
   },
   {
-    Name: "Feedback",
-    Link: "/feedback"
+    Name: "Users",
+    Link: "/users"
   },
   {
     Name: "Random Page",
