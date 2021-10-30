@@ -11,6 +11,9 @@ class FormsState extends Component {
   handleChange = e => {
     console.log(e.target.name);
     console.log(e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
   render() {
     const Mapper = {
@@ -29,6 +32,7 @@ class FormsState extends Component {
             Type={Mapper[key][0]}
             Desc={`Please enter the value for ${Mapper[key][1]}.`}
             onChange={this.handleChange}
+            Value={this.state[key]}
           />
         ))}
         <pre className="border rounded bg-light p-2">

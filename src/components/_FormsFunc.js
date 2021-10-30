@@ -17,6 +17,9 @@ const FormsFunc = () => {
   const handleChange = e => {
     console.log(e.target.name);
     console.log(e.target.value);
+    const NewForms = { ...Forms };
+    NewForms[e.target.name] = e.target.value;
+    setForms(NewForms);
   };
   return (
     <form>
@@ -28,6 +31,7 @@ const FormsFunc = () => {
           Type={Mapper[key][0]}
           Desc={`Please enter the value for ${Mapper[key][1]}.`}
           onChange={handleChange}
+          Value={Forms[key]}
         />
       ))}
       <pre className="border rounded bg-light p-2">
