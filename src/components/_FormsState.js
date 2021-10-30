@@ -8,6 +8,10 @@ class FormsState extends Component {
     Password: "",
     ConfPass: ""
   };
+  handleChange = e => {
+    console.log(e.target.name);
+    console.log(e.target.value);
+  };
   render() {
     const Mapper = {
       Username: ["text", "Username"],
@@ -24,8 +28,12 @@ class FormsState extends Component {
             Id={key}
             Type={Mapper[key][0]}
             Desc={`Please enter the value for ${Mapper[key][1]}.`}
+            onChange={this.handleChange}
           />
         ))}
+        <pre className="border rounded bg-light p-2">
+          {JSON.stringify(this.state, null, 2)}
+        </pre>
       </form>
     );
   }

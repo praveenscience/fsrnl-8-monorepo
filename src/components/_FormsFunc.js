@@ -14,6 +14,10 @@ const FormsFunc = () => {
     Password: ["password", "Password"],
     ConfPass: ["password", "Confirm Password"]
   };
+  const handleChange = e => {
+    console.log(e.target.name);
+    console.log(e.target.value);
+  };
   return (
     <form>
       {Object.keys(Forms).map(key => (
@@ -23,8 +27,12 @@ const FormsFunc = () => {
           Id={key}
           Type={Mapper[key][0]}
           Desc={`Please enter the value for ${Mapper[key][1]}.`}
+          onChange={handleChange}
         />
       ))}
+      <pre className="border rounded bg-light p-2">
+        {JSON.stringify(Forms, null, 2)}
+      </pre>
     </form>
   );
 };
