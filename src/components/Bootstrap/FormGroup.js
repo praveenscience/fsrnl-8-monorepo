@@ -1,4 +1,4 @@
-const FormGroup = ({ Label, Id, Type, className, Desc }) => {
+const FormGroup = ({ Label, Id, Type, className, Desc, onChange }) => {
   if (
     !Label ||
     (Label && Label.trim().length === 0) ||
