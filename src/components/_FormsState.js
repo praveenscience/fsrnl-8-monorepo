@@ -22,6 +22,7 @@ class FormsState extends Component {
       Password: ["password", "Password"],
       ConfPass: ["password", "Confirm Password"]
     };
+    const { Username, FullName, Password, ConfPass } = this.state;
     return (
       <form>
         {Object.keys(this.state).map(key => (
@@ -40,11 +41,11 @@ class FormsState extends Component {
           value="Register"
           className="btn btn-primary"
           disabled={
-            this.state.Username.trim().length < 3 ||
-            this.state.FullName.trim().length < 3 ||
-            this.state.Password.trim().length < 3 ||
-            this.state.ConfPass.trim().length < 3 ||
-            this.state.Password !== this.state.ConfPass
+            Username.trim().length < 3 ||
+            FullName.trim().length < 3 ||
+            Password.trim().length < 3 ||
+            ConfPass.trim().length < 3 ||
+            Password !== ConfPass
           }
         />
         <pre className="border rounded bg-light p-2 mt-4">

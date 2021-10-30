@@ -21,6 +21,7 @@ const FormsFunc = () => {
     NewForms[e.target.name] = e.target.value;
     setForms(NewForms);
   };
+  const { Username, FullName, Password, ConfPass } = Forms;
   return (
     <form>
       {Object.keys(Forms).map(key => (
@@ -39,11 +40,11 @@ const FormsFunc = () => {
         value="Register"
         className="btn btn-primary"
         disabled={
-          Forms.Username.trim().length < 3 ||
-          Forms.FullName.trim().length < 3 ||
-          Forms.Password.trim().length < 3 ||
-          Forms.ConfPass.trim().length < 3 ||
-          Forms.Password !== Forms.ConfPass
+          Username.trim().length < 3 ||
+          FullName.trim().length < 3 ||
+          Password.trim().length < 3 ||
+          ConfPass.trim().length < 3 ||
+          Password !== ConfPass
         }
       />
       <pre className="border rounded bg-light p-2 mt-4">
