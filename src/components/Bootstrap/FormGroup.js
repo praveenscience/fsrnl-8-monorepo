@@ -25,6 +25,7 @@ const FormGroup = ({ Label, Id, Type, className, Desc, onChange }) => {
         id={Id}
         aria-describedby={Id + "Help"}
         placeholder={"Enter " + Label}
+        onChange={onChange}
       />
       {Desc && (
         <div id={Id + "Help"} className="form-text">
