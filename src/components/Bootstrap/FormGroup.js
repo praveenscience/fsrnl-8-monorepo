@@ -23,6 +23,7 @@ const FormGroup = ({ Label, Id, Type, className, Desc, onChange }) => {
         type={Type}
         className={"form-control" + (className ? " " + className : "")}
         id={Id}
+        name={Id}
         aria-describedby={Id + "Help"}
         placeholder={"Enter " + Label}
         onChange={onChange}
