@@ -1,4 +1,4 @@
-const FormGroup = ({ Label, Id, Type, className, Desc, onChange }) => {
+const FormGroup = ({ Label, Id, Type, className, Desc, onChange, Value }) => {
   if (
     !Label ||
     (Label && Label.trim().length === 0) ||
@@ -27,6 +27,7 @@ const FormGroup = ({ Label, Id, Type, className, Desc, onChange }) => {
         aria-describedby={Id + "Help"}
         placeholder={"Enter " + Label}
         onChange={onChange}
+        value={Value}
       />
       {Desc && (
         <div id={Id + "Help"} className="form-text">
