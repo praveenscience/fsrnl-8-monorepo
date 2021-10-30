@@ -35,7 +35,19 @@ class FormsState extends Component {
             Value={this.state[key]}
           />
         ))}
-        <pre className="border rounded bg-light p-2">
+        <input
+          type="submit"
+          value="Register"
+          className="btn btn-primary"
+          disabled={
+            this.state.Username.trim().length < 3 ||
+            this.state.FullName.trim().length < 3 ||
+            this.state.Password.trim().length < 3 ||
+            this.state.ConfPass.trim().length < 3 ||
+            this.state.Password !== this.state.ConfPass
+          }
+        />
+        <pre className="border rounded bg-light p-2 mt-4">
           {JSON.stringify(this.state, null, 2)}
         </pre>
       </form>

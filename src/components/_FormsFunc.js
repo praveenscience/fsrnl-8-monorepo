@@ -34,7 +34,19 @@ const FormsFunc = () => {
           Value={Forms[key]}
         />
       ))}
-      <pre className="border rounded bg-light p-2">
+      <input
+        type="submit"
+        value="Register"
+        className="btn btn-primary"
+        disabled={
+          Forms.Username.trim().length < 3 ||
+          Forms.FullName.trim().length < 3 ||
+          Forms.Password.trim().length < 3 ||
+          Forms.ConfPass.trim().length < 3 ||
+          Forms.Password !== Forms.ConfPass
+        }
+      />
+      <pre className="border rounded bg-light p-2 mt-4">
         {JSON.stringify(Forms, null, 2)}
       </pre>
     </form>
