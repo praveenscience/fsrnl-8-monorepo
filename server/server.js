@@ -9,7 +9,11 @@ const port = 5000;
 
 // Create a GET Path.
 app.get("/", (req, res) => {
-  res.send("Hello Geeks!");
+  let output = "Hello Geeks!";
+  if (Object.values(req.query).length > 0) {
+    output += " Here's some queries: " + JSON.stringify(req.query, null, 2);
+  }
+  res.send(output);
 });
 app.post("/", (req, res) => {
   res.send("Hello Advanced Geeks!");
