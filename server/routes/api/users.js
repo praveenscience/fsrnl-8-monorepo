@@ -7,11 +7,18 @@ const Users = require("../../constants/users.json");
 
 // R from CRUD: List All
 app.get("/", (req, res) => {
-  res.json(Users);
+  res.json([...Users]);
 });
 // R from CRUD: List One
 app.get("/:Username", (req, res) => {
-  res.json(Users.find(user => user.Username === req.params.Username));
+  const User = Users.find(user => user.Username === req.params.Username);
+  if (User) {
+    res.json(User);
+  } else {
+    res.status(404).json({
+      Error: "User not found."
+    });
+  }
 });
 
 // Export the app.
