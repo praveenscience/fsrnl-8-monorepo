@@ -7,6 +7,13 @@ const app = express();
 // Define a port address.
 const port = 5000;
 
+// Use a Middleware to parse POST Data.
+// app.use((req, res, next) => {
+//   console.log({ req, res }); // res is undefined. Coz this is req cycle.
+//   next();
+//   console.log({ req, res }); // res contains server response coz this is res cycle.
+// });
+
 // Create a GET Path.
 app.get("/", (req, res) => {
   let output = "Hello Geeks!";
