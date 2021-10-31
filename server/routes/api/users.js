@@ -33,10 +33,16 @@ app.post("/", (req, res) => {
     GitHub.trim().length > 22 &&
     LinkedIn.trim().length > 28
   ) {
-    Users.push({ Username, FullName, GitHub, LinkedIn });
-    res
-      .status(201)
-      .json(`User ${FullName} with username "${Username}" has been created.`);
+    if (!Users.find(user => user.Username === Username)) {
+      Users.push({ Username, FullName, GitHub, LinkedIn });
+      res
+        .status(201)
+        .json(`User ${FullName} with username "${Username}" has been created.`);
+    } else {
+      res.status(409).json({
+        Error: `User with username "${Username} already exists."`
+      });
+    }
   } else {
     res.status(400).json({
       Error:
