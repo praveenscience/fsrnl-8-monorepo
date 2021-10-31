@@ -20,6 +20,30 @@ app.get("/:Username", (req, res) => {
     });
   }
 });
+// Create a new User.
+app.post("/", (req, res) => {
+  const { Username, FullName, GitHub, LinkedIn } = req.body;
+  if (
+    Username &&
+    FullName &&
+    GitHub &&
+    LinkedIn &&
+    Username.trim().length > 3 &&
+    FullName.trim().length > 3 &&
+    GitHub.trim().length > 22 &&
+    LinkedIn.trim().length > 28
+  ) {
+    Users.push({ Username, FullName, GitHub, LinkedIn });
+    res
+      .status(201)
+      .json(`User ${FullName} with username "${Username}" has been created.`);
+  } else {
+    res.status(400).json({
+      Error:
+        "You have to send all the values for Username, FullName, GitHub, LinkedIn"
+    });
+  }
+});
 
 // Export the app.
 module.exports = app;
