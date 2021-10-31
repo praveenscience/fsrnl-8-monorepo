@@ -9,6 +9,7 @@ const port = 5000;
 
 // Use a Middleware to parse POST Data.
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Create a GET Path.
 app.get("/", (req, res) => {
@@ -19,7 +20,14 @@ app.get("/", (req, res) => {
   res.send(output);
 });
 app.post("/", (req, res) => {
-  res.send("Hello Advanced Geeks!");
+  let output = "Hello Advanced Geeks!";
+  if (Object.values(req.query).length > 0) {
+    output += " Here's some queries: " + JSON.stringify(req.query, null, 2);
+  }
+  if (Object.values(req.body).length > 0) {
+    output += " Here's some body: " + JSON.stringify(req.body, null, 2);
+  }
+  res.send(output);
 });
 
 // Listen the app on port.
