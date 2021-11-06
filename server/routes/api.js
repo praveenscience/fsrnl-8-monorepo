@@ -87,6 +87,16 @@ app.get("/db/:action", (req, res) => {
       break;
   }
 });
+app.post("/db/new", (req, res) => {
+  const db = req.app.get("db");
+  const { username, password, fullname } = req.body;
+  db("gfg_fbclone_users")
+    .insert({ username, password, fullname })
+    .then(() => {
+      console.log(`User with ${username} created.`);
+      res.status(201).json(`User with ${username} created.`);
+    });
+});
 app.use("/users", users);
 
 // Export the app.
