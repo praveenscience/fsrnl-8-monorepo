@@ -4,6 +4,7 @@ const express = require("express");
 const app = express.Router();
 // Import routes.
 const users = require("./api/users");
+const sessions = require("./api/sessions");
 
 app.get("/", (req, res) => {
   res.json("Welcome to API Server.");
@@ -98,6 +99,7 @@ app.post("/db/new", (req, res) => {
     });
 });
 app.use("/users", users);
+app.use("/sessions", sessions);
 
 // Export the app.
 module.exports = app;
