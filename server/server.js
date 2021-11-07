@@ -1,6 +1,8 @@
 // Import the Express Library.
 // import express.* (Java)
 const express = require("express");
+// Import CORS library.
+const CORS = require("cors");
 // Initialise a server side app.
 // Express app = new Express(); (Java)
 const app = express();
@@ -15,6 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Require modular routes.
 app.use("/", root);
+// Add a CORS middleware.
+app.use(CORS());
 
 // Database Stuff.
 const knex = require("knex")({

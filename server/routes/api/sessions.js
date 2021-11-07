@@ -1,12 +1,7 @@
 // Import the Express Library.
 const express = require("express");
-// Import CORS library.
-const CORS = require("cors");
 // Create an instance of router.
 const app = express.Router();
-
-// Add a CORS middleware.
-app.use(CORS());
 
 let LoggedIn = null;
 let UserName = "";
