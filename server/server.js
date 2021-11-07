@@ -13,6 +13,9 @@ const port = 5000;
 // Import routes.
 const root = require("./routes/root");
 
+// Add a CORS middleware.
+app.use(CORS());
+
 // Use a Middleware to parse POST Data.
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,8 +35,6 @@ app.use(session(sessConfig));
 
 // Require modular routes.
 app.use("/", root);
-// Add a CORS middleware.
-app.use(CORS());
 
 // Database Stuff.
 const knex = require("knex")({
