@@ -3,24 +3,25 @@ const express = require("express");
 // Create an instance of router.
 const app = express.Router();
 
-let LoggedIn = null;
-let UserName = "";
 app.get("/", (req, res) => {
+  const LoggedIn = req.session.LoggedIn;
   res.json(LoggedIn);
 });
 app.post("/", (req, res) => {
-  LoggedIn = true;
+  req.session.LoggedIn = true;
+  const LoggedIn = req.session.LoggedIn;
   res.json(LoggedIn);
 });
 app.delete("/", (req, res) => {
-  LoggedIn = false;
+  req.session.LoggedIn = false;
+  const LoggedIn = req.session.LoggedIn;
   res.json(LoggedIn);
 });
 app.get("/name", (req, res) => {
-  res.json(UserName);
+  res.json(req.session.UserName);
 });
 app.post("/name", (req, res) => {
-  UserName = req.body.Name;
+  req.session.UserName = req.body.Name;
   res.status(201).json("Updated");
 });
 
