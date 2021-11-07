@@ -14,7 +14,11 @@ const port = 5000;
 const root = require("./routes/root");
 
 // Add a CORS middleware.
-app.use(CORS());
+app.use(CORS({ origin: true }));
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+});
 
 // Use a Middleware to parse POST Data.
 app.use(express.json());
