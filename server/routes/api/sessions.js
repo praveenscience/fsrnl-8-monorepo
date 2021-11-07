@@ -18,11 +18,20 @@ app.delete("/", (req, res) => {
   res.json(LoggedIn);
 });
 app.get("/name", (req, res) => {
-  res.json(req.session.UserName);
+  console.log(`Fetching name as: ${req.session.UserName}`);
+  res.json({
+    Name: req.session.UserName,
+    session: req.session,
+    id: req.sessionID
+  });
 });
 app.post("/name", (req, res) => {
+  console.log(req.body.Name);
   req.session.UserName = req.body.Name;
-  res.status(201).json("Updated");
+  console.log(`Name set as ${req.session.UserName}`);
+  res
+    .status(201)
+    .json({ msg: "Updated", session: req.session, id: req.sessionID });
 });
 
 // Export the app.
