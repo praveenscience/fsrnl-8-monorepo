@@ -6,23 +6,23 @@
   },
   "Birthdays": [
     {
-      "FullName": "Sadaf Jamal",
+      "FullName": "Sayan Dey",
       "ProfileURL": "/"
     },
     {
-      "FullName": "Mukesh Dani",
+      "FullName": "Kundan Kumar",
       "ProfileURL": "/"
     },
     {
-      "FullName": "Rahul Agre",
+      "FullName": "Praveen Kumar",
       "ProfileURL": "/"
     }
   ],
   "Pages": [
     {
-      "Avatar": "https://i.imgur.com/SrTKlVe.png",
+      "Avatar": "https://i.imgur.com/6hEwlza.png",
       "PageURL": "/",
-      "Name": "Edusera",
+      "Name": "GeeksforGeeks",
       "MessageCount": "20+",
       "NotificationCount": "20+"
     },
