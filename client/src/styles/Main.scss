@@ -27,8 +27,11 @@
       margin: 0;
       padding: 5px;
     }
-    img {
-      max-width: 100%;
+    .Image-Post {
+      padding: 0 5px;
+      img {
+        max-width: 100%;
+      }
     }
     .embed-container {
       position: relative;
@@ -61,8 +64,8 @@
   }
   .PostActions {
     color: #999;
-    padding: 3px 0 0;
-    font-size: 0.7em;
+    padding: 3px 5px 0;
+    font-size: 0.8em;
     a {
       font-size: 1.25em;
       text-decoration: none;

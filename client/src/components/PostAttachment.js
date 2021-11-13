@@ -3,7 +3,9 @@ const PostAttachment = ({ item }) => {
     item.Attachment && (
       <>
         {item.Type === "Picture" && (
-          <img src={item.Attachment} alt={item.Text} />
+          <div className="Image-Post">
+            <img src={item.Attachment} alt={item.Text} />
+          </div>
         )}
         {item.Type === "Video" && (
           <div className="embed-container">
