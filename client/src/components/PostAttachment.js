@@ -8,17 +8,19 @@ const PostAttachment = ({ item }) => {
           </div>
         )}
         {item.Type === "Video" && (
-          <div className="embed-container">
-            <iframe
-              src={
-                "https://www.youtube-nocookie.com/embed/" +
-                item.Attachment.replace("https://youtu.be/", "") +
-                "?controls=0&autohide=2"
-              }
-              title={item.Text}
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
+          <div className="Embed-Post">
+            <div className="embed-container">
+              <iframe
+                src={
+                  "https://www.youtube-nocookie.com/embed/" +
+                  item.Attachment.replace("https://youtu.be/", "") +
+                  "?controls=0&autohide=2"
+                }
+                title={item.Text}
+                frameBorder="0"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
         )}
       </>
