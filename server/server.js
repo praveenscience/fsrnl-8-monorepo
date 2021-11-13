@@ -40,19 +40,6 @@ app.use(session(sessConfig));
 // Require modular routes.
 app.use("/", root);
 
-// Database Stuff.
-const knex = require("knex")({
-  client: "pg",
-  connection: {
-    host: "127.0.0.1",
-    port: 5432,
-    user: "postgres",
-    password: "postgres",
-    database: "praveen"
-  }
-});
-app.set("db", knex);
-
 // Listen the app on port.
 app.listen(port, () => {
   console.log(`Server started in port ${port}.`);
