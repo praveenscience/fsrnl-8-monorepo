@@ -1,84 +1,42 @@
-import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
-import Navbar from "./Bootstrap/Navbar";
-import GenericRoute from "./GenericRoute";
-import UserProfile from "./UserProfile";
-import FourOhFour from "./FourOhFour";
-import { GetUsers } from "../services/Users";
-import Users from "./Users";
-import Forms from "./Forms";
+import { useEffect, useState } from "react";
+import { GetWallData, GetUserData } from "../services/UserData";
+import Header from "./Bootstrap/Header";
+import Feed from "./Feed";
+import Main from "./Main";
+import Sidebar from "./Sidebar";
 
-const Links = [
-  {
-    Name: "Home",
-    Link: "/",
-    Exact: true
-  },
-  {
-    Name: "About Me",
-    Link: "/about"
-  },
-  {
-    Name: "Downloads",
-    Link: "/downloads"
-  }
-];
-
-class App extends Component {
-  state = {
-    Dark: false,
-    Users: [],
-    Loaded: false
-  };
-  toggleNav = () => {
-    this.setState({ Dark: !this.state.Dark });
-  };
-  componentDidMount() {
-    GetUsers().then(res =>
-      this.setState({
-        Users: res.data,
-        Loaded: true
-      })
-    );
-  }
-  render() {
-    return (
-      <div className="App">
-        <Navbar dark={this.state.Dark} toggleNav={this.toggleNav}>
-          React Application
-        </Navbar>
-        <div className="container my-3">
+const App = () => {
+  const [UserData, setUserData] = useState(null);
+  const [WallData, setWallData] = useState([]);
+  useEffect(() => {
+    GetUserData().then(({ data: UserData }) => setUserData(UserData));
+    GetWallData().then(({ data: WallData }) => setWallData(WallData));
+  }, []);
+  return (
+    <div className="App">
+      <Header className="Header" UserMeta={UserData && UserData.UserMeta}>
+        Facebook Clone
+      </Header>
+      {UserData ? (
+        <div className="container">
           <div className="row">
-            <div className="col">
-              <Switch>
-                {Links.map(link => (
-                  <Route key={link.Link} path={link.Link} exact={link.Exact}>
-                    <GenericRoute Name={link.Name} />
-                  </Route>
-                ))}
-                <Route
-                  path="/users/:UserId"
-                  render={() =>
-                    this.state.Loaded ? (
-                      <UserProfile Users={this.state.Users} />
-                    ) : (
-                      <p>Loading User Data...</p>
-                    )
-                  }
-                />
-                <Route
-                  path="/users"
-                  render={() => <Users users={this.state.Users} />}
-                />
-                <Route path="/forms" render={() => <Forms />} />
-                <Route component={FourOhFour} />
-              </Switch>
-            </div>
+            <Sidebar
+              ContentList={UserData.ContentList}
+              UserMeta={UserData.UserMeta}
+            />
+            <Main WallData={WallData} />
+            <Feed
+              Birthdays={UserData.Birthdays}
+              Pages={UserData.Pages}
+              NewsFeeds={UserData.NewsFeeds}
+            />
           </div>
         </div>
-      </div>
-    );
-  }
-}
+      ) : (
+        "Login Screen"
+      )}
+    </div>
+  );
+};
 
 export default App;
