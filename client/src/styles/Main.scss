@@ -13,10 +13,8 @@
       }
     }
     &-Meta {
+      padding: 5px 0;
       p {
-        + p {
-          font-size: 0.85em;
-        }
         a {
           text-decoration: none;
           color: #333;
@@ -26,8 +24,8 @@
   }
   .FBBox > {
     p {
-      padding: 5px;
       margin: 0;
+      padding: 5px;
     }
     img {
       max-width: 100%;
