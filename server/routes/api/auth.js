@@ -6,9 +6,27 @@ const app = express.Router();
 const Users = require("../../constants/users.json");
 
 // Login to the App.
-app.post("/login", (req, res) => {
+app.post("/login", (req, res) => {});
+// Register with the App.
+app.post("/register", (req, res) => {
   const { username, password, fullname, location, email, avatar, joindate } =
     req.body;
+  // Make sure the request is valid.
+  const valid =
+    typeof username === "string" &&
+    typeof password === "string" &&
+    typeof fullname === "string" &&
+    typeof location === "string" &&
+    typeof email === "string" &&
+    typeof avatar === "string" &&
+    typeof joindate === "string" &&
+    username.trim().length > 0 &&
+    password.trim().length > 0 &&
+    fullname.trim().length > 0 &&
+    location.trim().length > 0 &&
+    email.trim().length > 0 &&
+    avatar.trim().length > 0 &&
+    joindate.trim().length > 0;
   console.log({
     username,
     password,
@@ -16,11 +34,10 @@ app.post("/login", (req, res) => {
     location,
     email,
     avatar,
-    joindate
+    joindate,
+    valid
   });
 });
-// Register with the App.
-app.post("/register", (req, res) => {});
 // Get Current LoggedIn User.
 app.get("/", (req, res) => {});
 // Logout the Session.
