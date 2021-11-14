@@ -33,7 +33,7 @@ app.post("/login", (req, res) => {
       if (users[username].password === hashPassword(password)) {
         // Username and Password combination is correct.
         // Set the session and login the user.
-        const FinalUser = { ...users[username] };
+        const FinalUser = { ...users[username], profileURL: "/" + username };
         delete FinalUser.password;
         req.session.User = FinalUser;
         res.json({
