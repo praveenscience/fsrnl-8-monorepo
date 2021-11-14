@@ -4,6 +4,7 @@ import Header from "./Bootstrap/Header";
 import Feed from "./Feed";
 import Main from "./Main";
 import Sidebar from "./Sidebar";
+import LDSRipple from "./LDSRipple";
 
 const App = () => {
   const [Loading, setLoading] = useState(true);
@@ -24,7 +25,7 @@ const App = () => {
         Facebook Clone
       </Header>
       {Loading ? (
-        "Loading... Please wait..."
+        <LDSRipple />
       ) : UserData ? (
         <div className="container">
           <div className="row">
