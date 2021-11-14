@@ -6,9 +6,13 @@ const app = express.Router();
 const Users = require("../../constants/users.json");
 
 // Login to the App.
+app.post("/login", (req, res) => {});
 // Register with the App.
+app.post("/register", (req, res) => {});
 // Get Current LoggedIn User.
+app.get("/", (req, res) => {});
 // Logout the Session.
+app.delete("/", (req, res) => {});
 
 // Export the app.
 module.exports = app;
