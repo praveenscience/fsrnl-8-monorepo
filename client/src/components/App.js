@@ -5,6 +5,7 @@ import Feed from "./Feed";
 import Main from "./Main";
 import Sidebar from "./Sidebar";
 import LDSRipple from "./LDSRipple";
+import Login from "./Login";
 
 const App = () => {
   const [Loading, setLoading] = useState(true);
@@ -42,7 +43,7 @@ const App = () => {
           </div>
         </div>
       ) : (
-        "Login Screen"
+        <Login />
       )}
     </div>
   );
