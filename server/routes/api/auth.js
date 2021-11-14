@@ -9,8 +9,8 @@ const Users = require("../../constants/users.json");
 app.post("/login", (req, res) => {});
 // Register with the App.
 app.post("/register", (req, res) => {
-  const { username, password, fullname, location, email, avatar, joindate } =
-    req.body;
+  const joindate = new Date();
+  const { username, password, fullname, location, email, avatar } = req.body;
   // Make sure the request is valid.
   const valid =
     typeof username === "string" &&
@@ -19,14 +19,12 @@ app.post("/register", (req, res) => {
     typeof location === "string" &&
     typeof email === "string" &&
     typeof avatar === "string" &&
-    typeof joindate === "string" &&
     username.trim().length > 0 &&
     password.trim().length > 0 &&
     fullname.trim().length > 0 &&
     location.trim().length > 0 &&
     email.trim().length > 0 &&
-    avatar.trim().length > 0 &&
-    joindate.trim().length > 0;
+    avatar.trim().length > 0;
   console.log({
     username,
     password,
@@ -37,6 +35,7 @@ app.post("/register", (req, res) => {
     joindate,
     valid
   });
+  res.end();
 });
 // Get Current LoggedIn User.
 app.get("/", (req, res) => {});
