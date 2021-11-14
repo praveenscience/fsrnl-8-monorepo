@@ -27,25 +27,27 @@ app.post("/register", (req, res) => {
     avatar.trim().length > 0;
   // Check if valid request, user has given all required elements.
   if (valid) {
-    // Store the new user.
-    Users[username] = {
-      username,
-      password,
-      fullname,
-      location,
-      email,
-      avatar,
-      joindate
-    };
-    res.status(201).json({
-      username,
-      password,
-      fullname,
-      location,
-      email,
-      avatar,
-      joindate
-    });
+    // Check if there's already a user with the same name.
+    if (typeof Users[username] !== "undefined") {
+      // User already exists.
+      res.status(409).json({
+        Error: "User already exists."
+      });
+    } else {
+      // Store the new user.
+      Users[username] = {
+        username,
+        password,
+        fullname,
+        location,
+        email,
+        avatar,
+        joindate
+      };
+      res.status(201).json({
+        Message: `User ${fullname} created with username ${username}.`
+      });
+    }
   } else {
     res.status(400).json({
       Error: "You have to give all the mandatory fields."
