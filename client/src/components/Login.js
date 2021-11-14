@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const Login = () => {
+  const [Reg, setReg] = useState(false);
   return (
     <section className="login-form-wrap">
       <h1>Facebook Clone</h1>
