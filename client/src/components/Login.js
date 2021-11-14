@@ -2,6 +2,10 @@ import React, { useState } from "react";
 
 const Login = () => {
   const [Reg, setReg] = useState(false);
+  const handleLoginRegToggle = e => {
+    e.preventDefault();
+    setReg(reg => !reg);
+  };
   return (
     <section className="login-form-wrap">
       <h1>Facebook Clone</h1>
@@ -71,13 +75,7 @@ const Login = () => {
         <input type="submit" value={Reg ? "Register" : "Login"} />
       </form>
       <h5>
-        <a
-          href="/"
-          onClick={e => {
-            e.preventDefault();
-            setReg(reg => !reg);
-          }}
-        >
+        <a href="/" onClick={handleLoginRegToggle}>
           {Reg
             ? "Already have an account? Login"
             : "Don't have an account? Register"}
