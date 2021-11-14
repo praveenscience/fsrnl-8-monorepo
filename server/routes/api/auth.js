@@ -121,7 +121,11 @@ app.get("/", (req, res) => {
   }
 });
 // Logout the Session.
-app.delete("/", (req, res) => {});
+app.delete("/", (req, res) => {
+  req.session.destroy(function (err) {
+    res.status(204).end();
+  });
+});
 
 // Export the app.
 module.exports = app;
