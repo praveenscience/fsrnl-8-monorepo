@@ -6,18 +6,26 @@ import Main from "./Main";
 import Sidebar from "./Sidebar";
 
 const App = () => {
+  const [Loading, setLoading] = useState(true);
   const [UserData, setUserData] = useState(null);
   const [WallData, setWallData] = useState([]);
   useEffect(() => {
-    GetUserData().then(({ data: UserData }) => setUserData(UserData));
-    GetWallData().then(({ data: WallData }) => setWallData(WallData));
+    GetUserData().then(({ data: UserData }) => {
+      setUserData(UserData);
+      GetWallData().then(({ data: WallData }) => {
+        setWallData(WallData);
+        setLoading(false);
+      });
+    });
   }, []);
   return (
     <div className="App">
       <Header className="Header" UserMeta={UserData && UserData.UserMeta}>
         Facebook Clone
       </Header>
-      {UserData ? (
+      {Loading ? (
+        "Loading... Please wait..."
+      ) : UserData ? (
         <div className="container">
           <div className="row">
             <Sidebar
