@@ -8,7 +8,24 @@ const Login = () => {
   });
   const handleLoginRegToggle = e => {
     e.preventDefault();
-    setReg(reg => !reg);
+    setReg(reg => {
+      if (!reg) {
+        setFormData(fd => ({
+          ...fd,
+          confpass: "",
+          fullname: "",
+          location: "",
+          email: "",
+          avatar: ""
+        }));
+      } else {
+        setFormData(fd => ({
+          username: fd.username,
+          password: fd.password
+        }));
+      }
+      return !reg;
+    });
   };
   return (
     <section className="login-form-wrap">
