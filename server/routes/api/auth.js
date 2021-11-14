@@ -11,7 +11,50 @@ const Users = () =>
 const { hashPassword } = require("../../helpers/usersHelper");
 
 // Login to the App.
-app.post("/login", (req, res) => {});
+app.post("/login", (req, res) => {
+  const users = Users();
+  const { username, password } = req.body;
+  // Make sure the request is valid.
+  const valid =
+    typeof username === "string" &&
+    typeof password === "string" &&
+    username.trim().length > 0 &&
+    password.trim().length > 0;
+  // Check if valid request, user has given all required elements.
+  if (valid) {
+    // Check if there's already a user with the same name.
+    if (typeof users[username] === "undefined") {
+      // User not found.
+      res.status(404).json({
+        Error: "User doesn't exist"
+      });
+    } else {
+      // User exists.
+      if (users[username].password === hashPassword(password)) {
+        // Username and Password combination is correct.
+        // Set the session and login the user.
+        const FinalUser = { ...users[username] };
+        delete FinalUser.password;
+        req.session.User = FinalUser;
+        res.json({
+          Message: "User logged in successfully.",
+          // ToDo: Remove these two below.
+          SessionID: req.sessionID,
+          User: req.session.User
+        });
+      } else {
+        // Username and Password combination is correct.
+        res.status(404).json({
+          Error: "Invalid Username & Password."
+        });
+      }
+    }
+  } else {
+    res.status(400).json({
+      Error: "You have to give all the mandatory fields."
+    });
+  }
+});
 // Register with the App.
 app.post("/register", (req, res) => {
   const users = Users();
