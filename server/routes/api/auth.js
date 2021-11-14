@@ -2,6 +2,8 @@
 const express = require("express");
 // Create an instance of router.
 const app = express.Router();
+// Import the Users.
+const Users = require("../../constants/users.json");
 
 // Login to the App.
 // Register with the App.
