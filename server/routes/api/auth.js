@@ -110,7 +110,9 @@ app.post("/register", (req, res) => {
   }
 });
 // Get Current LoggedIn User.
-app.get("/", (req, res) => {});
+app.get("/", (req, res) => {
+  res.json(req.session.User);
+});
 // Logout the Session.
 app.delete("/", (req, res) => {});
 
