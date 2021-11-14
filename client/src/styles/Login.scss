@@ -34,7 +34,7 @@
   label {
     display: block;
   }
-  & input[type="email"],
+  & input[type="text"],
   & input[type="password"] {
     width: 100%;
     border: 1px solid #314d89;
@@ -46,7 +46,7 @@
     cursor: pointer;
   }
 
-  & input[type="email"] {
+  & input[type="text"] {
     border-bottom: none;
     border-radius: 4px 4px 0 0;
     padding-bottom: 13px;

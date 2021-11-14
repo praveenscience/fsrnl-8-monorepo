@@ -6,13 +6,18 @@ const Login = () => {
       <h1>Facebook Clone</h1>
       <form className="login-form">
         <label>
-          <input type="email" name="email" required placeholder="Email" />
+          <input
+            type="text"
+            name="username"
+            required={true}
+            placeholder="Username"
+          />
         </label>
         <label>
           <input
             type="password"
             name="password"
-            required
+            required={true}
             placeholder="Password"
           />
         </label>
