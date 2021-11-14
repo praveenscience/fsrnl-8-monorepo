@@ -6,6 +6,7 @@ const Login = () => {
     <section className="login-form-wrap">
       <h1>Facebook Clone</h1>
       <form className="login-form">
+        <div className="login-form-content">
           <label>
             <input
               type="text"
@@ -66,6 +67,7 @@ const Login = () => {
               </label>
             </>
           ) : null}
+        </div>
         <input type="submit" value={Reg ? "Register" : "Login"} />
       </form>
       <h5>
