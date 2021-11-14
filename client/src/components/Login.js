@@ -6,23 +6,67 @@ const Login = () => {
     <section className="login-form-wrap">
       <h1>Facebook Clone</h1>
       <form className="login-form">
-        <label>
-          <input
-            type="text"
-            name="username"
-            required={true}
-            placeholder="Username"
-          />
-        </label>
-        <label>
-          <input
-            type="password"
-            name="password"
-            required={true}
-            placeholder="Password"
-          />
-        </label>
-        <input type="submit" value="Login" />
+          <label>
+            <input
+              type="text"
+              name="username"
+              required={true}
+              placeholder="Username"
+            />
+          </label>
+          <label>
+            <input
+              type="password"
+              name="password"
+              required={true}
+              placeholder="Password"
+            />
+          </label>
+          {Reg ? (
+            <>
+              <label>
+                <input
+                  type="password"
+                  name="confpass"
+                  required={true}
+                  placeholder="Confirm Password"
+                />
+              </label>
+              <label>
+                <input
+                  type="text"
+                  name="fullname"
+                  required={true}
+                  placeholder="Full Name"
+                />
+              </label>
+              <label>
+                <input
+                  type="text"
+                  name="location"
+                  required={true}
+                  placeholder="Current Location"
+                />
+              </label>
+              <label>
+                <input
+                  type="email"
+                  name="email"
+                  required={true}
+                  placeholder="Email Address"
+                />
+              </label>
+              <label>
+                <input
+                  type="text"
+                  name="avatar"
+                  required={true}
+                  placeholder="Your Avatar URL"
+                />
+              </label>
+            </>
+          ) : null}
+        <input type="submit" value={Reg ? "Register" : "Login"} />
       </form>
       <h5>
         <a
