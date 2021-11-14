@@ -6,7 +6,19 @@ const app = express.Router();
 const Users = require("../../constants/users.json");
 
 // Login to the App.
-app.post("/login", (req, res) => {});
+app.post("/login", (req, res) => {
+  const { username, password, fullname, location, email, avatar, joindate } =
+    req.body;
+  console.log({
+    username,
+    password,
+    fullname,
+    location,
+    email,
+    avatar,
+    joindate
+  });
+});
 // Register with the App.
 app.post("/register", (req, res) => {});
 // Get Current LoggedIn User.
