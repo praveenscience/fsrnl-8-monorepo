@@ -25,7 +25,17 @@ const Login = () => {
         <input type="submit" value="Login" />
       </form>
       <h5>
-        <a href="/">Forgot password</a>
+        <a
+          href="/"
+          onClick={e => {
+            e.preventDefault();
+            setReg(reg => !reg);
+          }}
+        >
+          {Reg
+            ? "Already have an account? Login"
+            : "Don't have an account? Register"}
+        </a>
       </h5>
     </section>
   );
