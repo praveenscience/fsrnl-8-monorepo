@@ -25,7 +25,7 @@ app.post("/register", (req, res) => {
     location.trim().length > 0 &&
     email.trim().length > 0 &&
     avatar.trim().length > 0;
-  console.log({
+  res.json({
     username,
     password,
     fullname,
@@ -35,7 +35,6 @@ app.post("/register", (req, res) => {
     joindate,
     valid
   });
-  res.end();
 });
 // Get Current LoggedIn User.
 app.get("/", (req, res) => {});
