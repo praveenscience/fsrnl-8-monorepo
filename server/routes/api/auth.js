@@ -8,6 +8,8 @@ const app = express.Router();
 const Users = () =>
   JSON.parse(fs.readFileSync(__dirname + "/../../constants/users.json"));
 
+const { hashPassword } = require("../../helpers/usersHelper");
+
 // Login to the App.
 app.post("/login", (req, res) => {});
 // Register with the App.
@@ -41,7 +43,7 @@ app.post("/register", (req, res) => {
       // Store the new user.
       users[username] = {
         username,
-        password,
+        password: hashPassword(password),
         fullname,
         location,
         email,
@@ -53,7 +55,9 @@ app.post("/register", (req, res) => {
         JSON.stringify(users)
       );
       res.status(201).json({
-        Message: `User ${fullname} created with username ${username}.`
+        Message: `User ${fullname} created with username ${username} with password ${hashPassword(
+          password
+        )}.`
       });
     }
   } else {
