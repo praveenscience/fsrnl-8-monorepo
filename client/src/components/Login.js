@@ -6,6 +6,43 @@ const Login = () => {
     username: "",
     password: ""
   });
+  const InpMap = {
+    username: {
+      type: "text",
+      name: "username",
+      placeholder: "Username"
+    },
+    password: {
+      type: "password",
+      name: "password",
+      placeholder: "Password"
+    },
+    confpass: {
+      type: "password",
+      name: "confpass",
+      placeholder: "Confirm Password"
+    },
+    fullname: {
+      type: "text",
+      name: "fullname",
+      placeholder: "Full Name"
+    },
+    location: {
+      type: "text",
+      name: "location",
+      placeholder: "Current Location"
+    },
+    email: {
+      type: "email",
+      name: "email",
+      placeholder: "Email Address"
+    },
+    avatar: {
+      type: "text",
+      name: "avatar",
+      placeholder: "Your Avatar URL"
+    }
+  };
   const handleLoginRegToggle = e => {
     e.preventDefault();
     setReg(reg => {
