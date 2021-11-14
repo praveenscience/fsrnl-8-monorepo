@@ -36,12 +36,7 @@ app.post("/login", (req, res) => {
         const FinalUser = { ...users[username], profileURL: "/" + username };
         delete FinalUser.password;
         req.session.User = FinalUser;
-        res.json({
-          Message: "User logged in successfully.",
-          // ToDo: Remove these two below.
-          SessionID: req.sessionID,
-          User: req.session.User
-        });
+        res.json({ userdata: req.session.User, walldata: [] });
       } else {
         // Username and Password combination is correct.
         res.status(404).json({
@@ -111,7 +106,7 @@ app.post("/register", (req, res) => {
 });
 // Get Current LoggedIn User.
 app.get("/", (req, res) => {
-  res.json(req.session.User);
+  res.json({ userdata: req.session.User, walldata: [] });
 });
 // Logout the Session.
 app.delete("/", (req, res) => {});
