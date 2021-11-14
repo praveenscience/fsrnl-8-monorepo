@@ -37,7 +37,7 @@ app.post("/login", (req, res) => {
         delete FinalUser.password;
         req.session.User = FinalUser;
         res.json({
-          userdata: { UserMeta: req.session.User ? req.session.User : null },
+          userdata: { UserMeta: req.session.User },
           walldata: []
         });
       } else {
@@ -109,10 +109,16 @@ app.post("/register", (req, res) => {
 });
 // Get Current LoggedIn User.
 app.get("/", (req, res) => {
-  res.json({
-    userdata: { UserMeta: req.session.User ? req.session.User : null },
-    walldata: []
-  });
+  if (req.session.User) {
+    res.json({
+      userdata: { UserMeta: req.session.User },
+      walldata: []
+    });
+  } else {
+    res.json({
+      userdata: null
+    });
+  }
 });
 // Logout the Session.
 app.delete("/", (req, res) => {});
