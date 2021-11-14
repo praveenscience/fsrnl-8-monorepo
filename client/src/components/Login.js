@@ -36,6 +36,13 @@ const Login = () => {
       placeholder: "Your Avatar URL"
     }
   };
+  const handleChange = e => {
+    const newFormData = {
+      ...FormData
+    };
+    newFormData[e.target.name] = e.target.value;
+    setFormData(newFormData);
+  };
   const handleLoginRegToggle = e => {
     e.preventDefault();
     setReg(reg => {
@@ -69,6 +76,7 @@ const Login = () => {
                 name={fd}
                 required={true}
                 placeholder={InpMap[fd].placeholder}
+                onChange={handleChange}
               />
             </label>
           ))}
