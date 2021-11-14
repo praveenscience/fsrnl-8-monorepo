@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Login = () => {
   const [Reg, setReg] = useState(false);
+  const [FormData, setFormData] = useState({});
   const handleLoginRegToggle = e => {
     e.preventDefault();
     setReg(reg => !reg);
