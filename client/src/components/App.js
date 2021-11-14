@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GetWallData, GetUserData } from "../services/UserData";
+import { GetUserData } from "../services/UserData";
 import Header from "./Bootstrap/Header";
 import Feed from "./Feed";
 import Main from "./Main";
@@ -12,12 +12,14 @@ const App = () => {
   const [UserData, setUserData] = useState(null);
   const [WallData, setWallData] = useState([]);
   useEffect(() => {
-    GetUserData().then(({ data: UserData }) => {
-      setUserData(UserData);
-      GetWallData().then(({ data: WallData }) => {
-        setWallData(WallData);
-        setLoading(false);
-      });
+    GetUserData().then(({ data }) => {
+      const { userdata, walldata } = data;
+      console.log({ userdata, walldata });
+      if (userdata) {
+        setUserData(userdata);
+        setWallData(walldata);
+      }
+      setLoading(false);
     });
   }, []);
   return (
