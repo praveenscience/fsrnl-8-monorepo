@@ -25,16 +25,32 @@ app.post("/register", (req, res) => {
     location.trim().length > 0 &&
     email.trim().length > 0 &&
     avatar.trim().length > 0;
-  res.json({
-    username,
-    password,
-    fullname,
-    location,
-    email,
-    avatar,
-    joindate,
-    valid
-  });
+  // Check if valid request, user has given all required elements.
+  if (valid) {
+    // Store the new user.
+    Users[username] = {
+      username,
+      password,
+      fullname,
+      location,
+      email,
+      avatar,
+      joindate
+    };
+    res.status(201).json({
+      username,
+      password,
+      fullname,
+      location,
+      email,
+      avatar,
+      joindate
+    });
+  } else {
+    res.status(400).json({
+      Error: "You have to give all the mandatory fields."
+    });
+  }
 });
 // Get Current LoggedIn User.
 app.get("/", (req, res) => {});
