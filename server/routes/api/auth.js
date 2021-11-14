@@ -1,14 +1,18 @@
+// Import filesystem library.
+const fs = require("fs");
 // Import the Express Library.
 const express = require("express");
 // Create an instance of router.
 const app = express.Router();
 // Import the Users.
-const Users = require("../../constants/users.json");
+const Users = () =>
+  JSON.parse(fs.readFileSync(__dirname + "/../../constants/users.json"));
 
 // Login to the App.
 app.post("/login", (req, res) => {});
 // Register with the App.
 app.post("/register", (req, res) => {
+  const users = Users();
   const joindate = new Date();
   const { username, password, fullname, location, email, avatar } = req.body;
   // Make sure the request is valid.
@@ -28,14 +32,14 @@ app.post("/register", (req, res) => {
   // Check if valid request, user has given all required elements.
   if (valid) {
     // Check if there's already a user with the same name.
-    if (typeof Users[username] !== "undefined") {
+    if (typeof users[username] !== "undefined") {
       // User already exists.
       res.status(409).json({
         Error: "User already exists."
       });
     } else {
       // Store the new user.
-      Users[username] = {
+      users[username] = {
         username,
         password,
         fullname,
@@ -44,6 +48,10 @@ app.post("/register", (req, res) => {
         avatar,
         joindate
       };
+      fs.writeFileSync(
+        __dirname + "/../../constants/users.json",
+        JSON.stringify(users)
+      );
       res.status(201).json({
         Message: `User ${fullname} created with username ${username}.`
       });
