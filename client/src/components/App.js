@@ -18,6 +18,22 @@ const App = () => {
   const [WallData, setWallData] = useState([]);
   const [Error, setError] = useState(null);
   const [Success, setSuccess] = useState(null);
+  const initUDWD = (userdata, walldata) => {
+    setUserData(userdata);
+    setWallData(walldata);
+    const { UserBDay, Today } = [
+      userdata.UserMeta.birthday.substr(
+        userdata.UserMeta.birthday.indexOf("-") + 1
+      ),
+      (() => {
+        const now = new Date();
+        return `${now.getMonth() + 1}-${now.getDate()}`;
+      })()
+    ];
+    if (UserBDay === Today) {
+      document.body.classList.add("birthday");
+    }
+  };
   useEffect(() => {
     setLoading(true);
     setError(null);
@@ -25,8 +41,7 @@ const App = () => {
     GetUserData().then(({ data }) => {
       const { userdata, walldata } = data;
       if (userdata) {
-        setUserData(userdata);
-        setWallData(walldata);
+        initUDWD(userdata, walldata);
       }
       setLoading(false);
     });
@@ -39,8 +54,7 @@ const App = () => {
       .then(({ data }) => {
         const { userdata, walldata } = data;
         if (userdata) {
-          setUserData(userdata);
-          setWallData(walldata);
+          initUDWD(userdata, walldata);
         }
         setLoading(false);
       })
@@ -72,6 +86,7 @@ const App = () => {
       setUserData(null);
       setWallData([]);
       setLoading(false);
+      document.body.classList.remove("birthday");
     });
   };
   return (

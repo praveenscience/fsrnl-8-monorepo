@@ -2,5 +2,8 @@ body {
   font-family: "Open Sans";
   background-color: #eaeaea;
   font-size: 10pt;
+  &.birthday {
+    background: url("https://i.imgur.com/rk9eqY0.png") #eaeaea;
+  }
   @import "App";
 }
