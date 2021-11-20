@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { GetUserData, LoginUser, LogoutUser } from "../services/Auth";
+import {
+  GetUserData,
+  LoginUser,
+  RegisterUser,
+  LogoutUser
+} from "../services/Auth";
 import Header from "./Bootstrap/Header";
 import Feed from "./Feed";
 import Main from "./Main";
@@ -33,6 +38,14 @@ const App = () => {
         setUserData(userdata);
         setWallData(walldata);
       }
+      setLoading(false);
+    });
+  };
+  const handleRegister = FormData => {
+    console.log(FormData);
+    setLoading(true);
+    RegisterUser(FormData).then(({ data }) => {
+      console.log(data);
       setLoading(false);
     });
   };
@@ -72,7 +85,7 @@ const App = () => {
           </div>
         </div>
       ) : (
-        <Login handleLogin={handleLogin} />
+        <Login handleLogin={handleLogin} handleRegister={handleRegister} />
       )}
     </div>
   );

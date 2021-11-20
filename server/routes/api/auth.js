@@ -138,9 +138,7 @@ app.post("/register", (req, res) => {
         JSON.stringify(users)
       );
       res.status(201).json({
-        Message: `User ${fullname} created with username ${username} with password ${hashPassword(
-          password
-        )}.`
+        Message: `User ${fullname} created with username ${username}.`
       });
     }
   } else {

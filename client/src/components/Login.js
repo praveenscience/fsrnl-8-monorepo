@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Login = ({ handleLogin }) => {
+const Login = ({ handleLogin, handleRegister }) => {
   const [Reg, setReg] = useState(false);
   const [FormData, setFormData] = useState({
     username: "",
@@ -66,7 +66,11 @@ const Login = ({ handleLogin }) => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    handleLogin(FormData);
+    if (Reg) {
+      handleRegister(FormData);
+    } else {
+      handleLogin(FormData);
+    }
   };
   return (
     <section className="login-form-wrap">
