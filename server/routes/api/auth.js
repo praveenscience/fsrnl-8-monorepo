@@ -99,7 +99,8 @@ app.post("/login", (req, res) => {
 app.post("/register", (req, res) => {
   const users = Users();
   const joindate = new Date();
-  const { username, password, fullname, location, email, avatar } = req.body;
+  const { username, password, fullname, location, email, birthday, avatar } =
+    req.body;
   // Make sure the request is valid.
   const valid =
     typeof username === "string" &&
@@ -107,12 +108,14 @@ app.post("/register", (req, res) => {
     typeof fullname === "string" &&
     typeof location === "string" &&
     typeof email === "string" &&
+    typeof birthday === "string" &&
     typeof avatar === "string" &&
     username.trim().length > 0 &&
     password.trim().length > 0 &&
     fullname.trim().length > 0 &&
     location.trim().length > 0 &&
     email.trim().length > 0 &&
+    birthday.trim().length > 0 &&
     avatar.trim().length > 0;
   // Check if valid request, user has given all required elements.
   if (valid) {
@@ -130,6 +133,7 @@ app.post("/register", (req, res) => {
         fullname,
         location,
         email,
+        birthday,
         avatar,
         joindate
       };
