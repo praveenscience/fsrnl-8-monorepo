@@ -60,6 +60,10 @@ const App = () => {
       })
       .catch(err => {
         setError(err.response.data.Error);
+        window.setTimeout(() => {
+          setError(null);
+          setSuccess(null);
+        }, 5000);
         setLoading(false);
       });
   };
@@ -67,6 +71,10 @@ const App = () => {
     if (FormData.password !== FormData.confpass) {
       setError("Both the Passwords should match!");
       setSuccess(null);
+      window.setTimeout(() => {
+        setError(null);
+        setSuccess(null);
+      }, 5000);
     } else {
       setLoading(true);
       setError(null);
@@ -74,10 +82,18 @@ const App = () => {
       RegisterUser(FormData)
         .then(({ data }) => {
           setSuccess(data.Message);
+          window.setTimeout(() => {
+            setError(null);
+            setSuccess(null);
+          }, 5000);
           setLoading(false);
         })
         .catch(err => {
           setError(err.response.data.Error);
+          window.setTimeout(() => {
+            setError(null);
+            setSuccess(null);
+          }, 5000);
           setLoading(false);
         });
     }
