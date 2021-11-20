@@ -64,18 +64,23 @@ const App = () => {
       });
   };
   const handleRegister = FormData => {
-    setLoading(true);
-    setError(null);
-    setSuccess(null);
-    RegisterUser(FormData)
-      .then(({ data }) => {
-        setSuccess(data.Message);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.response.data.Error);
-        setLoading(false);
-      });
+    if (FormData.password !== FormData.confpass) {
+      setError("Both the Passwords should match!");
+      setSuccess(null);
+    } else {
+      setLoading(true);
+      setError(null);
+      setSuccess(null);
+      RegisterUser(FormData)
+        .then(({ data }) => {
+          setSuccess(data.Message);
+          setLoading(false);
+        })
+        .catch(err => {
+          setError(err.response.data.Error);
+          setLoading(false);
+        });
+    }
   };
   const handleLogout = e => {
     e.preventDefault();
