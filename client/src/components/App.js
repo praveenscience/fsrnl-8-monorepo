@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GetUserData } from "../services/UserData";
+import { GetUserData, LoginUser } from "../services/Auth";
 import Header from "./Bootstrap/Header";
 import Feed from "./Feed";
 import Main from "./Main";
@@ -22,6 +22,20 @@ const App = () => {
       setLoading(false);
     });
   }, []);
+  const handleLogin = FormData => {
+    console.log("From App.js Line 26");
+    console.log(FormData);
+    setLoading(true);
+    LoginUser(FormData).then(({ data }) => {
+      const { userdata, walldata } = data;
+      console.log({ userdata, walldata });
+      if (userdata) {
+        setUserData(userdata);
+        setWallData(walldata);
+      }
+      setLoading(false);
+    });
+  };
   return (
     <div className="App">
       <Header className="Header" UserMeta={UserData && UserData.UserMeta}>
@@ -45,7 +59,7 @@ const App = () => {
           </div>
         </div>
       ) : (
-        <Login />
+        <Login handleLogin={handleLogin} />
       )}
     </div>
   );
