@@ -16,6 +16,8 @@ const App = () => {
   const [Loading, setLoading] = useState(true);
   const [UserData, setUserData] = useState(null);
   const [WallData, setWallData] = useState([]);
+  const [Error, setError] = useState(null);
+  const [Success, setSuccess] = useState(null);
   useEffect(() => {
     GetUserData().then(({ data }) => {
       const { userdata, walldata } = data;
