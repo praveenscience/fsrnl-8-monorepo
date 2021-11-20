@@ -34,6 +34,10 @@ const Login = ({ handleLogin, handleRegister }) => {
     avatar: {
       type: "text",
       placeholder: "Your Avatar URL"
+    },
+    birthday: {
+      type: "date",
+      placeholder: "Enter your Birthday"
     }
   };
   const handleChange = e => {
@@ -53,7 +57,8 @@ const Login = ({ handleLogin, handleRegister }) => {
           fullname: "",
           location: "",
           email: "",
-          avatar: ""
+          avatar: "",
+          birthday: ""
         }));
       } else {
         setFormData(fd => ({
@@ -76,6 +81,9 @@ const Login = ({ handleLogin, handleRegister }) => {
     <section className="login-form-wrap">
       <h1>Facebook Clone</h1>
       <form className="login-form" onSubmit={handleSubmit}>
+        <pre className="border rounded bg-light p-3 text-start">
+          {JSON.stringify(FormData, null, 2)}
+        </pre>
         <div className="login-form-content">
           {Object.keys(FormData).map(fd => (
             <label key={fd}>
