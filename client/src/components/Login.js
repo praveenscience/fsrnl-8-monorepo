@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
   const [Reg, setReg] = useState(false);
   const [FormData, setFormData] = useState({
     username: "",
@@ -64,10 +64,14 @@ const Login = () => {
       return !reg;
     });
   };
+  const handleSubmit = e => {
+    e.preventDefault();
+    handleLogin(FormData);
+  };
   return (
     <section className="login-form-wrap">
       <h1>Facebook Clone</h1>
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <div className="login-form-content">
           {Object.keys(FormData).map(fd => (
             <label key={fd}>
