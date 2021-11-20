@@ -10,6 +10,45 @@ const Users = () =>
 
 const { hashPassword } = require("../../helpers/usersHelper");
 
+const ContentList = {
+  Default: [
+    {
+      Link: "/",
+      Icon: "news",
+      Text: "News Feed"
+    },
+    {
+      Link: "/",
+      Icon: "chat",
+      Text: "Messenger"
+    },
+    {
+      Link: "/",
+      Icon: "watch",
+      Text: "Watch"
+    },
+    {
+      Link: "/",
+      Icon: "market",
+      Text: "Marketplace"
+    }
+  ],
+  Shortcuts: [
+    {
+      Link: "https://rb.gy/movl7r",
+      Icon: "web",
+      Text: "Personal Website"
+    }
+  ],
+  Explore: [
+    {
+      Link: "https://rb.gy/fupw21",
+      Icon: "yt",
+      Text: "YouTube Channel"
+    }
+  ]
+};
+
 // Login to the App.
 app.post("/login", (req, res) => {
   const users = Users();
@@ -37,7 +76,10 @@ app.post("/login", (req, res) => {
         delete FinalUser.password;
         req.session.User = FinalUser;
         res.json({
-          userdata: { UserMeta: req.session.User },
+          userdata: {
+            UserMeta: req.session.User,
+            ContentList
+          },
           walldata: []
         });
       } else {
@@ -111,7 +153,10 @@ app.post("/register", (req, res) => {
 app.get("/", (req, res) => {
   if (req.session.User) {
     res.json({
-      userdata: { UserMeta: req.session.User },
+      userdata: {
+        UserMeta: req.session.User,
+        ContentList
+      },
       walldata: []
     });
   } else {
