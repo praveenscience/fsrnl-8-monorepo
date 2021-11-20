@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GetUserData, LoginUser } from "../services/Auth";
+import { GetUserData, LoginUser, LogoutUser } from "../services/Auth";
 import Header from "./Bootstrap/Header";
 import Feed from "./Feed";
 import Main from "./Main";
@@ -36,9 +36,22 @@ const App = () => {
       setLoading(false);
     });
   };
+  const handleLogout = e => {
+    e.preventDefault();
+    setLoading(true);
+    LogoutUser().then(() => {
+      setUserData(null);
+      setWallData([]);
+      setLoading(false);
+    });
+  };
   return (
     <div className="App">
-      <Header className="Header" UserMeta={UserData && UserData.UserMeta}>
+      <Header
+        className="Header"
+        UserMeta={UserData && UserData.UserMeta}
+        handleLogout={handleLogout}
+      >
         Facebook Clone
       </Header>
       {Loading ? (

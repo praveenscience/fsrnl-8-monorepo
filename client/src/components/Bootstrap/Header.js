@@ -1,6 +1,6 @@
 import HeaderUserMeta from "../HeaderUserMeta";
 
-const Header = ({ dark, children, className, UserMeta }) => {
+const Header = ({ dark, children, className, UserMeta, handleLogout }) => {
   dark = !!dark ? "dark" : "light";
   return (
     <nav
@@ -13,7 +13,9 @@ const Header = ({ dark, children, className, UserMeta }) => {
           <img src="/logo512.png" alt={children + " Logo"} className="me-2" />
           {children}
         </a>
-        {UserMeta && <HeaderUserMeta {...UserMeta} />}
+        {UserMeta && (
+          <HeaderUserMeta {...UserMeta} handleLogout={handleLogout} />
+        )}
       </div>
     </nav>
   );

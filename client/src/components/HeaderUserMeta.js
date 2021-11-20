@@ -1,6 +1,6 @@
 import React from "react";
 
-const HeaderUserMeta = ({ profileURL, avatar, fullname }) => {
+const HeaderUserMeta = ({ profileURL, avatar, fullname, handleLogout }) => {
   return (
     <div className="UserMeta">
       <a href={profileURL}>
@@ -10,6 +10,9 @@ const HeaderUserMeta = ({ profileURL, avatar, fullname }) => {
       <span className="nav-links">
         <a href="/">Home</a>
         <a href="/">Create</a>
+        <a href="/" onClick={handleLogout}>
+          Logout
+        </a>
       </span>
     </div>
   );
