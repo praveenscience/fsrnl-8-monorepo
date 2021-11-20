@@ -6,6 +6,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  .NegativeMargin {
+    margin: 35px auto -35px;
+  }
   @import "Login";
   @import "Bootstrap/Header";
   @import "FBBox";

@@ -19,9 +19,11 @@ const App = () => {
   const [Error, setError] = useState(null);
   const [Success, setSuccess] = useState(null);
   useEffect(() => {
+    setLoading(true);
+    setError(null);
+    setSuccess(null);
     GetUserData().then(({ data }) => {
       const { userdata, walldata } = data;
-      console.log({ userdata, walldata });
       if (userdata) {
         setUserData(userdata);
         setWallData(walldata);
@@ -30,30 +32,42 @@ const App = () => {
     });
   }, []);
   const handleLogin = FormData => {
-    console.log("From App.js Line 26");
-    console.log(FormData);
     setLoading(true);
-    LoginUser(FormData).then(({ data }) => {
-      const { userdata, walldata } = data;
-      console.log({ userdata, walldata });
-      if (userdata) {
-        setUserData(userdata);
-        setWallData(walldata);
-      }
-      setLoading(false);
-    });
+    setError(null);
+    setSuccess(null);
+    LoginUser(FormData)
+      .then(({ data }) => {
+        const { userdata, walldata } = data;
+        if (userdata) {
+          setUserData(userdata);
+          setWallData(walldata);
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.response.data.Error);
+        setLoading(false);
+      });
   };
   const handleRegister = FormData => {
-    console.log(FormData);
     setLoading(true);
-    RegisterUser(FormData).then(({ data }) => {
-      console.log(data);
-      setLoading(false);
-    });
+    setError(null);
+    setSuccess(null);
+    RegisterUser(FormData)
+      .then(({ data }) => {
+        setSuccess(data.Message);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.response.data.Error);
+        setLoading(false);
+      });
   };
   const handleLogout = e => {
     e.preventDefault();
     setLoading(true);
+    setError(null);
+    setSuccess(null);
     LogoutUser().then(() => {
       setUserData(null);
       setWallData([]);
@@ -87,7 +101,41 @@ const App = () => {
           </div>
         </div>
       ) : (
-        <Login handleLogin={handleLogin} handleRegister={handleRegister} />
+        <>
+          {Error && (
+            <div className="container NegativeMargin">
+              <div className="row">
+                <div className="col-4 offset-4">
+                  <div className="px-4">
+                    <div
+                      className="alert alert-danger m-0 text-center fw-bold fs-6"
+                      role="alert"
+                    >
+                      {Error}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          {Success && (
+            <div className="container NegativeMargin">
+              <div className="row">
+                <div className="col-4 offset-4">
+                  <div className="px-4">
+                    <div
+                      className="alert alert-primary m-0 text-center fw-bold fs-6"
+                      role="alert"
+                    >
+                      {Success}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          <Login handleLogin={handleLogin} handleRegister={handleRegister} />
+        </>
       )}
     </div>
   );
